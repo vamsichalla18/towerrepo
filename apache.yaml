@@ -1,6 +1,6 @@
 ---
 - name: Configuring Apache
-  hosts: linux1
+  hosts: 54.193.26.173
   tasks:
   - name: Install the package
     yum:
