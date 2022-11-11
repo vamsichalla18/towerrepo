@@ -1,5 +1,6 @@
 ---
 - name: Configuring Apache
+  become: true
   hosts: localhost
   tasks:
   - name: Install the package
