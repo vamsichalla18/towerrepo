@@ -4,7 +4,7 @@
   tasks:
   - name: Install the package
     yum:
-     name: httpd
+     name: ""{{ param1 }}"
      state: present
 
   - name: creating index file
