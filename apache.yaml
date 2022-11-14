@@ -1,18 +1,8 @@
 ---
-- name: Configuring Apache
-  hosts: all
-  tasks:
-  - name: Install the package
-    yum:
-     name: "{{ param1 }}"
-     state: present
-
-  - name: creating index file
-    copy:
-     content: "Hello From Ansible Automation!!"
-     dest: /var/www/html/index.html
-
-  - name: starting the service
-    service:
-     name: httpd
-     state: started
+- name: Create a resource group
+  azure_rm_resourcegroup:
+    name: myResourceGroup
+    location: westus
+    tags:
+        testing: testing
+        delete: never
