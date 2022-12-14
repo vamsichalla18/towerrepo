@@ -1,6 +1,6 @@
 ---
 - name: Configuring Apache
-  hosts: all
+  hosts: localhost
   tasks:
   - name: Install the package
     yum:
