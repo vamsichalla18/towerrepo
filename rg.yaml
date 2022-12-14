@@ -1,4 +1,19 @@
-- name: Create resource group
-    azure_rm_resourcegroup:
-    name: ansible-rg
-    location: eastus
+---
+- name: Login to Azure
+  block:
+    - name: Set AZ Cloud
+      shell: >
+        az cloud set --name {{ var_azureCloud | quote }}
+      changed_when: false
+      register: prv_common_azcli_login_output
+
+    - name: AZ Login to Azure
+      shell: >
+        az login --service-principal --username {{ AZURE_RM_CLIENTID | quote }} --password {{ AZURE_RM_SECRET | quote }} --tenant {{ AZURE_RM_TENANTID | quote }}
+      changed_when: false
+      register: prv_common_azcli_login_output
+      no_log: yes
+
+  rescue:
+    - fail:
+        msg: "{{ prv_common_azcli_login_output.stderr_lines }}"
